@@ -1,0 +1,8 @@
+
+[flake8]
+# set of files to exclude from linting algo
+exclude = 
+    migartions,
+    __pycache__,
+    manage.py
+    settings.py
