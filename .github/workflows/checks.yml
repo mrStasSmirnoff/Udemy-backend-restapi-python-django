@@ -1,4 +1,3 @@
---- # indicates the yaml file
 name: Checks
 
 on: [push] #define trigger on push
