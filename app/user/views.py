@@ -9,7 +9,6 @@ from user.serializers import (
     UserSerializer,
     AuthTokenSerializer,
 )
-from django.shortcuts import render
 
 
 class CreateUserView(generics.CreateAPIView):
