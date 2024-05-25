@@ -1,7 +1,6 @@
 """
 Test for the user API
 """
-
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -12,6 +11,7 @@ from rest_framework import status
 CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
 ME_URL = reverse('user:me')
+
 
 def create_user(**params):
     """Create and return new user"""
@@ -24,7 +24,6 @@ class PublicUserApiTests(TestCase):
     """
     def setUp(self):
         self.client = APIClient()
-
 
     def test_create_user_success(self):
         """
@@ -42,7 +41,6 @@ class PublicUserApiTests(TestCase):
         self.assertTrue(user.check_password(payload['password']))
         self.assertNotIn('password', res.data)
 
-
     def test_user_with_email_exists_error(self):
         """
         Test error returned if user with email exists
@@ -56,7 +54,6 @@ class PublicUserApiTests(TestCase):
         res = self.client.post(CREATE_USER_URL, payload)
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
-
 
     def test_password_too_short_error(self):
         """
@@ -73,7 +70,6 @@ class PublicUserApiTests(TestCase):
             email=payload['email']
         ).exists()
         self.assertFalse(user_exists)
-
 
     def test_create_token_for_user(self):
         """
@@ -94,7 +90,6 @@ class PublicUserApiTests(TestCase):
         self.assertIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
-
     def test_create_token_bad_credentials(self):
         """
         Test returns error if credentials invalid
@@ -110,7 +105,6 @@ class PublicUserApiTests(TestCase):
         self.assertNotIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
-
     def test_create_token_blank_password(self):
             """
             est posting a blank password returns an error
@@ -120,7 +114,6 @@ class PublicUserApiTests(TestCase):
 
             self.assertNotIn('token', res.data)
             self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
-
 
     def test_retrieve_user_unauthorized(self):
         """
@@ -145,7 +138,6 @@ class PrivateUserApiTests(TestCase):
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
-
     def test_retrieve_profile_success(self):
         res = self.client.get(ME_URL)
 
@@ -160,7 +152,6 @@ class PrivateUserApiTests(TestCase):
         res = self.client.post(ME_URL, {})
 
         self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-
 
     def test_update_user_profile(self):
         """Test updating the user profile for the authenticated user."""

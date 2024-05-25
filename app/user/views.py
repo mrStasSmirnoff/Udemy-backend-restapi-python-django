@@ -11,11 +11,13 @@ from user.serializers import (
 )
 from django.shortcuts import render
 
+
 class CreateUserView(generics.CreateAPIView):
     """
     Create a new user in the system
     """
     serializer_class = UserSerializer
+
 
 class CreateTokenView(ObtainAuthToken):
     """
