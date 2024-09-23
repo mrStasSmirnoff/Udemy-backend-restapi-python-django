@@ -1,5 +1,6 @@
 """
 URL mappings for the recipe app.
+Map URLs to views.
 """
 from django.urls import (
     path,

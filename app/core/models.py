@@ -1,5 +1,5 @@
 """
-Database Models
+Database Models - define the data structure
 """
 from django.conf import settings
 from django.db import models
@@ -57,6 +57,7 @@ class Recipe(models.Model):
     time_minutes = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     link = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
