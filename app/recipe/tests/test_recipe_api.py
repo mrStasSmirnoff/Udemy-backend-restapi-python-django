@@ -93,7 +93,7 @@ class PrivateRecipeApiTests(TestCase):
     def test_get_recipe_detail(self):
         """Test viewing a recipe detail."""
         recipe = create_recipe(user=self.user)
-        
+
         #recipe.tags.add(create_tag(user=self.user))
         #recipe.ingredients.add(create_ingredient(user=self.user))
 
@@ -126,10 +126,10 @@ class PrivateRecipeApiTests(TestCase):
         """
         original_link = 'https://example.com/recipe.pdf'
         recipe = create_recipe(
-            user=self.user, 
+            user=self.user,
             title='Sample recipe Title',
             link=original_link)
-        
+
         payload = {'title': 'New title'}
         url = detail_url(recipe.id)
         res = self.client.patch(url, payload)
@@ -150,7 +150,7 @@ class PrivateRecipeApiTests(TestCase):
             link='http://example.com/recipe.pdf',
             description='Sample recipe description',
             )
-        
+
         payload = {
             'title': 'New Recipe title',
             'link': 'http://example.com/new-recipe.pdf',
