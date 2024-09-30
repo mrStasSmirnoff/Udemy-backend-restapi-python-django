@@ -1,7 +1,8 @@
 """
 Serializers for recipe APIs
 
-Convert complex data (like querysets and model instances) to and from native Python data types for rendering
+Convert complex data (like querysets and model instances) to and
+from native Python data types for rendering
 into JSON or other content types.
 """
 from rest_framework import serializers
@@ -24,4 +25,3 @@ class RecipeDetailSerializer(RecipeSerializer):
 
     class Meta(RecipeSerializer.Meta):
         fields = RecipeSerializer.Meta.fields + ['description']
-

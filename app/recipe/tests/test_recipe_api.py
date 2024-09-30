@@ -36,11 +36,13 @@ def create_recipe(user, **params):
     recipe = Recipe.objects.create(user=user, **defaults)
     return recipe
 
+
 def create_user(**params):
     """
     Create and return a user
     """
     return get_user_model().objects.create_user(**params)
+
 
 class PublicRecipeAPITests(TestCase):
     """Test unauthenticated API requests."""
@@ -93,9 +95,6 @@ class PrivateRecipeApiTests(TestCase):
     def test_get_recipe_detail(self):
         """Test viewing a recipe detail."""
         recipe = create_recipe(user=self.user)
-
-        #recipe.tags.add(create_tag(user=self.user))
-        #recipe.ingredients.add(create_ingredient(user=self.user))
 
         url = detail_url(recipe.id)
         res = self.client.get(url)
