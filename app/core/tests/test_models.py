@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from decimal import Decimal
 from core import models
 
+
 def create_user(email='user@example.com', password='testpass123'):
     """
     Helper function to create a new user

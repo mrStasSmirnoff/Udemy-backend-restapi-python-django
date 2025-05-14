@@ -60,9 +60,9 @@ class Recipe(models.Model):
     description = models.TextField(blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
 
-
     def __str__(self):
         return self.title
+
 
 class Tag(models.Model):
     """Tag to be used for recipe."""

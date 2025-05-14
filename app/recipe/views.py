@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import Recipe, Tag
 from recipe import serializers
 
+
 # https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset
 class RecipeViewSet(viewsets.ModelViewSet):
     """

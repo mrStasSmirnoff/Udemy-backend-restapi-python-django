@@ -11,11 +11,13 @@ from recipe.serializers import TagSerializer
 
 TAGS_URL = reverse('recipe:tag-list')
 
+
 def create_user(email='user@example.com', password='testpass123'):
     """
     Helper function to create a new user
     """
     return get_user_model().objects.create_user(email, password)
+
 
 class PublicTagsAPITests(TestCase):
     """
@@ -32,6 +34,7 @@ class PublicTagsAPITests(TestCase):
         res = self.client.get(TAGS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
 
 class PrivateTagsAPITests(TestCase):
     """
