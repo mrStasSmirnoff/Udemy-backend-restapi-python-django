@@ -246,7 +246,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(recipe.tags.count(), 2)
         self.assertIn(tag_indian, recipe.tags.all())
         for tag in payload['tags']:
-            exists = self.tags.filter(name=tag['name'], user=self.user).exists()
+            exists = recipe.tags.filter(name=tag['name'], user=self.user).exists()
             self.assertTrue(exists)
 
 
