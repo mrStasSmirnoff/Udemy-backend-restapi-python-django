@@ -42,7 +42,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 
 class TagViewSet(mixins.ListModelMixin,
-                 viewsets.GenericViewSet):
+                 mixins.UpdateModelMixin,
+                 viewsets.GenericViewSet,
+                 mixins.DestroyModelMixin):
     """
     Manage tags in the database
     """
