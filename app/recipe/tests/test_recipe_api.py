@@ -255,4 +255,3 @@ class PrivateRecipeApiTests(TestCase):
 
             self.assertTrue(exists)
 
-
